@@ -1,19 +1,20 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
-import 'package:e_commerce_app/screens/auth/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -44,7 +45,7 @@ class _SignInPageState extends State<SignInPage> {
                     fontSize: 30,
                   ),
                   CustomText(
-                    text: "Sign in to your account",
+                    text: "Create new user account",
                     color: Colors.white,
                     fontSize: 18,
                   ),
@@ -76,34 +77,26 @@ class _SignInPageState extends State<SignInPage> {
                         controller: _passwordController,
                         isPassword: true,
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CustomText(
-                          text: "Fogot Password?",
-                          color: Colors.amber.shade800,
-                          fontSize: 18,
-                        ),
+                      CutomTextField(
+                        prefixIcon: Icons.password,
+                        label: "Confirm Password",
+                        controller: _confirmPasswordController,
+                        isPassword: true,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       CustomButton(
                         size: size,
-                        text: "Sign In",
+                        text: "Create Account",
                         colors: [Colors.amber.shade600, Colors.amber.shade800],
                         onTap: () {},
                       ),
                       CustomButton(
                         size: size,
-                        text: "Create New Account",
+                        text: "Sign In",
                         colors: [Colors.grey.shade600, Colors.grey.shade800],
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignUpPage(),
-                              ));
-                        },
+                        onTap: () {},
                       )
                     ],
                   ),
