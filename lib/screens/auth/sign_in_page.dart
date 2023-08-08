@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
+import 'package:e_commerce_app/screens/auth/fogot_password.dart';
 import 'package:e_commerce_app/screens/auth/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
@@ -78,10 +79,19 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: CustomText(
-                          text: "Fogot Password?",
-                          color: Colors.amber.shade800,
-                          fontSize: 18,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ForgotPasswordPage()));
+                          },
+                          child: CustomText(
+                            text: "Fogot Password?",
+                            color: Colors.amber.shade800,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                       const SizedBox(

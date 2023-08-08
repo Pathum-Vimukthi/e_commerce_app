@@ -102,6 +102,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ),
+            ),
+            const BackButton(
+              color: Colors.white,
             )
           ],
         ),
