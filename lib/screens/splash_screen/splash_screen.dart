@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,14 +16,19 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
+              CupertinoActivityIndicator(
+                radius: 25,
+              ),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 "Loading...",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 50,
+                    fontSize: 30,
                     fontWeight: FontWeight.w600),
-              ),
-              CircularProgressIndicator()
+              )
             ],
           ),
         )
