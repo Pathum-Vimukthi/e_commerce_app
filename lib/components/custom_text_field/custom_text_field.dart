@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CutomTextField extends StatefulWidget {
   TextEditingController controller = TextEditingController();
   final bool isPassword;
