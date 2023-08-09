@@ -140,7 +140,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ProductDetails()));
+                                builder: (context) => ProductDetails(
+                                      car: cars[index],
+                                    )));
                       },
                       child: Container(
                         height: 100,
