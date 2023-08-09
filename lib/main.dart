@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/screens/home/home_page.dart';
+import 'package:e_commerce_app/screens/cart/cart.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E Commerce App',
-      theme:
-          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber)),
-      home: const HomePage(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          useMaterial3: true),
+      home: const MyCart(),
     );
   }
 }
