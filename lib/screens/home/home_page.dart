@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/models/car_model.dart';
+import 'package:e_commerce_app/screens/product_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -134,46 +135,54 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 6,
                       mainAxisSpacing: 6),
                   itemBuilder: (context, index) {
-                    return Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.bottomRight,
-                              child: Icon(
-                                Icons.favorite_border,
-                                color: Colors.grey.shade600,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ProductDetails()));
+                      },
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.grey.shade600,
+                                ),
                               ),
-                            ),
-                            Image.network(
-                              cars[index].image,
-                            ),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                    text: cars[index].name,
-                                    fontSize: 15,
-                                    textOverFlow: TextOverflow.ellipsis,
-                                  ),
-                                  CustomText(
-                                    text: "\$ ${cars[index].price}",
-                                    fontSize: 13,
-                                    textOverFlow: TextOverflow.ellipsis,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ],
+                              Image.network(
+                                cars[index].image,
                               ),
-                            )
-                          ],
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                      text: cars[index].name,
+                                      fontSize: 15,
+                                      textOverFlow: TextOverflow.ellipsis,
+                                    ),
+                                    CustomText(
+                                      text: "\$ ${cars[index].price}",
+                                      fontSize: 13,
+                                      textOverFlow: TextOverflow.ellipsis,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
