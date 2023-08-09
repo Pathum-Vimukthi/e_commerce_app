@@ -133,7 +133,8 @@ class _HomePageState extends State<HomePage> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 6,
-                      mainAxisSpacing: 6),
+                      mainAxisSpacing: 6,
+                      childAspectRatio: 0.95),
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {

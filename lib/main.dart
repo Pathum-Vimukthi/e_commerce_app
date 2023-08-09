@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/screens/cart/cart.dart';
+import 'package:e_commerce_app/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true),
-      home: const MyCart(),
+      home: const HomePage(),
     );
   }
 }
