@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "865824554968",
+    "project_id": "bmw-flutter-d08c0",
+    "storage_bucket": "bmw-flutter-d08c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865824554968:android:f55c9b0c570178695dfcad",
+        "android_client_info": {
+          "package_name": "lk.flutter_app.e_commerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865824554968-kunti7nme665t0v5a1gfvj4u3v5v8mdo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKI3jP6zs1URpnfdF3TeMe-OkZ2I5zztY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865824554968-kunti7nme665t0v5a1gfvj4u3v5v8mdo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

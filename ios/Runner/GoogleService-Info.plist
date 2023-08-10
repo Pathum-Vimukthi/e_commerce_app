@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>865824554968-2pe692fkig0p5g68uommsr9i2hvn5pr5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.865824554968-2pe692fkig0p5g68uommsr9i2hvn5pr5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBqrhhT9GbPnY1wK_cdVj1-2XsjsVUss1E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>865824554968</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>lk.flutter_app.e_commerce_app</string>
+	<key>PROJECT_ID</key>
+	<string>bmw-flutter-d08c0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bmw-flutter-d08c0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:865824554968:ios:928ba3f8c9adb4575dfcad</string>
+</dict>
+</plist>
