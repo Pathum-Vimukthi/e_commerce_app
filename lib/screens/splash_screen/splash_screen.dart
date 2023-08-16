@@ -33,10 +33,10 @@ class _SplashScreenState extends State<SplashScreen> {
         Container(
           decoration: const BoxDecoration(color: Colors.amber),
         ),
-        Center(
+        const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               CupertinoActivityIndicator(
                 radius: 25,
               ),

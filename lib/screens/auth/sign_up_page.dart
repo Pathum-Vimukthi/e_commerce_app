@@ -35,10 +35,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(0.5), BlendMode.darken))),
-              child: Center(
+              child: const Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   CustomText(
                     text: "BMW Store",
                     color: Colors.white,

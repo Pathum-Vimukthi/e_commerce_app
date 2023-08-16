@@ -117,12 +117,12 @@ class _MyCartState extends State<MyCart> {
                                 border:
                                     Border.all(color: Colors.grey, width: 2),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(4.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.remove,
                                     size: 15,
@@ -160,9 +160,9 @@ class _MyCartState extends State<MyCart> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           CustomText(
                             text: "Total",
                             fontSize: 18,
