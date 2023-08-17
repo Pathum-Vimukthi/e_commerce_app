@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/screens/auth/sign_up_page.dart';
 import 'package:e_commerce_app/screens/home/home_page.dart';
+import 'package:e_commerce_app/utils/navigator_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -12,18 +13,10 @@ class AuthController {
       () {
         FirebaseAuth.instance.authStateChanges().listen((User? user) {
           if (user == null) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SignUpPage(),
-                ));
+            CustomNavigator.goTo(context, const SignUpPage());
             Logger().e("User us currently sign out!");
           } else {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ));
+            CustomNavigator.goTo(context, const HomePage());
             Logger().i('User is signed in!');
           }
         });
