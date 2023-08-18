@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
+import 'package:e_commerce_app/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -90,7 +92,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         size: size,
                         text: "Create Account",
                         colors: [Colors.amber.shade600, Colors.amber.shade800],
-                        onTap: () {},
+                        onTap: () {
+                          if (_emailController.text.isEmpty) {
+                            Logger().e("Please insert your email");
+                          } else if (_passwordController.text.isEmpty) {
+                            Logger().e("Please insert your password");
+                          } else if (_passwordController.text !=
+                              _confirmPasswordController.text) {
+                            Logger().e("Check your password");
+                          } else {
+                            AuthController.createUserAccount(
+                                email: _emailController.text,
+                                password: _passwordController.text);
+                          }
+                        },
                       ),
                       CustomButton(
                         size: size,
