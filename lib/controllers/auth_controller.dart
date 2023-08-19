@@ -1,29 +1,8 @@
-import 'package:e_commerce_app/screens/auth/sign_up_page.dart';
-import 'package:e_commerce_app/screens/home/main_screen.dart';
-import 'package:e_commerce_app/utils/navigator_utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class AuthController {
-  //Check Current User State
-  static Future<void> checkAuthState(BuildContext context) async {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        FirebaseAuth.instance.authStateChanges().listen((User? user) {
-          if (user == null) {
-            CustomNavigator.goTo(context, const SignUpPage());
-            Logger().i("User us currently sign out!");
-          } else {
-            CustomNavigator.goTo(context, const MainScreen());
-            Logger().i('User is signed in!');
-          }
-        });
-      },
-    );
-  }
-
   //Sign Out User
   static Future<void> signOutUser() async {
     await FirebaseAuth.instance.signOut();
@@ -45,16 +24,19 @@ class AuthController {
   }
 
   //Create User Account with Email and Paasword
-  static Future<void> createUserAccount({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> createUserAccount(
+      {required String email,
+      required String password,
+      required String name}) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      )
+          .then((value) {
+        addUser(value.user!.uid, name, email);
+      });
 
       Logger().i(credential.user!.uid);
     } on FirebaseAuthException catch (e) {
@@ -76,5 +58,22 @@ class AuthController {
   static Future<void> sendPasswordResetEmail(String email) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
     Logger().i("Email send");
+  }
+
+  //Save User Data
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  Future<void> addUser(String uid, String name, String email) {
+    return users
+        .doc(uid)
+        .set({
+          'name': name,
+          'userImage':
+              "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+          'uid': uid,
+          'email': email
+        })
+        .then((value) => Logger().i("User Added"))
+        .catchError((error) => Logger().i("Failed to add user: $error"));
   }
 }

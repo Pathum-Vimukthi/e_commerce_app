@@ -3,6 +3,7 @@ import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
 import 'package:e_commerce_app/controllers/auth_controller.dart';
 import 'package:e_commerce_app/providers/profile_provider.dart';
+import 'package:e_commerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,8 +29,8 @@ class _ProfilePageState extends State<ProfilePage> {
               width: 100,
               height: 100,
             ),
-            const CustomText(
-              text: "user@gmail.com",
+            CustomText(
+              text: Provider.of<UserProvider>(context).userData!.email,
               fontSize: 20,
             ),
             CutomTextField(

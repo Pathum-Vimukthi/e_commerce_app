@@ -1,6 +1,7 @@
-import 'package:e_commerce_app/controllers/auth_controller.dart';
+import 'package:e_commerce_app/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    AuthController.checkAuthState(context);
+    Provider.of<UserProvider>(context, listen: false).checkAuthState(context);
   }
 
   @override
