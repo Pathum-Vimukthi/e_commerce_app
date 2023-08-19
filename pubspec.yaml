@@ -42,6 +42,7 @@ dependencies:
   logger: ^2.0.1
   provider: ^6.0.5
   fluttertoast: ^8.2.2
+  cloud_firestore: ^4.8.5
 
 dev_dependencies:
   flutter_test:

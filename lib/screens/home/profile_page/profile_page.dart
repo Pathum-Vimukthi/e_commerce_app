@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
+import 'package:e_commerce_app/controllers/auth_controller.dart';
 import 'package:e_commerce_app/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 size: size,
                 text: "Update",
                 colors: [Colors.amber.shade600, Colors.amber.shade900],
-                onTap: () {})
+                onTap: () {}),
+            const SizedBox(
+              height: 8,
+            ),
+            CustomButton(
+                size: size,
+                text: "Sign Out",
+                colors: [Colors.grey.shade600, Colors.grey.shade900],
+                onTap: () {
+                  AuthController.signOutUser();
+                })
           ],
         );
       }),
