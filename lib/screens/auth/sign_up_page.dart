@@ -1,9 +1,9 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
-import 'package:e_commerce_app/controllers/auth_controller.dart';
+import 'package:e_commerce_app/providers/signup_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -13,10 +13,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _confirmPasswordController =
+  //     TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -65,61 +65,58 @@ class _SignUpPageState extends State<SignUpPage> {
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35))),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView(
-                    children: [
-                      CutomTextField(
-                        prefixIcon: Icons.email,
-                        label: "Email",
-                        controller: _emailController,
-                      ),
-                      CutomTextField(
-                        prefixIcon: Icons.password,
-                        label: "Password",
-                        controller: _passwordController,
-                        isPassword: true,
-                      ),
-                      CutomTextField(
-                        prefixIcon: Icons.password,
-                        label: "Confirm Password",
-                        controller: _confirmPasswordController,
-                        isPassword: true,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomButton(
-                        size: size,
-                        text: "Create Account",
-                        colors: [Colors.amber.shade600, Colors.amber.shade800],
-                        onTap: () {
-                          if (_emailController.text.isEmpty) {
-                            Logger().e("Please insert your email");
-                          } else if (_passwordController.text.isEmpty) {
-                            Logger().e("Please insert your password");
-                          } else if (_passwordController.text !=
-                              _confirmPasswordController.text) {
-                            Logger().e("Check your password");
-                          } else {
-                            AuthController.createUserAccount(
-                                email: _emailController.text,
-                                password: _passwordController.text);
-                          }
-                        },
-                      ),
-                      CustomButton(
-                        size: size,
-                        text: "Sign In",
-                        colors: [Colors.grey.shade600, Colors.grey.shade800],
-                        onTap: () {},
-                      )
-                    ],
-                  ),
-                ),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Consumer<SignUpProvider>(
+                      builder: (context, value, child) {
+                        return ListView(
+                          children: [
+                            CutomTextField(
+                              prefixIcon: Icons.email,
+                              label: "Email",
+                              controller: value.emailController,
+                            ),
+                            CutomTextField(
+                              prefixIcon: Icons.password,
+                              label: "Password",
+                              controller: value.passwordController,
+                              isPassword: true,
+                            ),
+                            CutomTextField(
+                              prefixIcon: Icons.password,
+                              label: "Confirm Password",
+                              controller: value.confirmPasswordController,
+                              isPassword: true,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              size: size,
+                              text: "Create Account",
+                              colors: [
+                                Colors.amber.shade600,
+                                Colors.amber.shade800
+                              ],
+                              onTap: () {
+                                Provider.of<SignUpProvider>(context,
+                                        listen: false)
+                                    .signUpUser();
+                              },
+                            ),
+                            CustomButton(
+                              size: size,
+                              text: "Sign In",
+                              colors: [
+                                Colors.grey.shade600,
+                                Colors.grey.shade800
+                              ],
+                              onTap: () {},
+                            )
+                          ],
+                        );
+                      },
+                    )),
               ),
-            ),
-            const BackButton(
-              color: Colors.white,
             )
           ],
         ),
