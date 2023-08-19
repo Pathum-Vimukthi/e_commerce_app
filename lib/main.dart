@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/firebase_options.dart';
+import 'package:e_commerce_app/providers/home_page_provider.dart';
+import 'package:e_commerce_app/providers/profile_provider.dart';
 import 'package:e_commerce_app/providers/signin_provider.dart';
 import 'package:e_commerce_app/providers/signup_provider.dart';
 import 'package:e_commerce_app/screens/splash_screen/splash_screen.dart';
@@ -18,6 +20,12 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => SignInProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => HomePageProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ProfileProvider(),
       )
     ],
     child: const MyApp(),

@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/screens/auth/sign_up_page.dart';
-import 'package:e_commerce_app/screens/home/home_page.dart';
+import 'package:e_commerce_app/screens/home/main_screen.dart';
 import 'package:e_commerce_app/utils/navigator_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class AuthController {
             CustomNavigator.goTo(context, const SignUpPage());
             Logger().i("User us currently sign out!");
           } else {
-            CustomNavigator.goTo(context, const HomePage());
+            CustomNavigator.goTo(context, const MainScreen());
             Logger().i('User is signed in!');
           }
         });
