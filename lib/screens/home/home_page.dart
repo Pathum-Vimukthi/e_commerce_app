@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
+import 'package:e_commerce_app/controllers/auth_controller.dart';
 import 'package:e_commerce_app/models/car_model.dart';
 import 'package:e_commerce_app/screens/product_view.dart';
 import 'package:flutter/material.dart';
@@ -82,17 +83,25 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.menu,
                       size: 30,
                     ),
-                    Icon(
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    const Icon(
                       Icons.search,
                       size: 30,
-                    )
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          AuthController.signOutUser();
+                        },
+                        icon: const Icon(Icons.exit_to_app))
                   ],
                 ),
                 const CustomText(

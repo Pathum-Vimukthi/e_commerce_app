@@ -24,6 +24,11 @@ class AuthController {
     );
   }
 
+  //Sign Out User
+  static Future<void> signOutUser() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   //Create User with Email and Paasword
   static Future<void> createUserAccount(
       {required String email, required String password}) async {
