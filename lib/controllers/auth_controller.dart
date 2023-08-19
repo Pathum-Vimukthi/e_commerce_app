@@ -29,6 +29,21 @@ class AuthController {
     await FirebaseAuth.instance.signOut();
   }
 
+  //Signin Into User Account
+  static Future<void> signIntoAccount(
+      {required String emailAddress, required String password}) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: emailAddress, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Logger().i('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        Logger().i('Wrong password provided for that user.');
+      }
+    }
+  }
+
   //Create User with Email and Paasword
   static Future<void> createUserAccount(
       {required String email, required String password}) async {
@@ -52,5 +67,11 @@ class AuthController {
     } catch (e) {
       Logger().e(e);
     }
+  }
+
+  //Send Password Reset email
+  static Future<void> sendPasswordResetEmail(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    Logger().i("Email send");
   }
 }

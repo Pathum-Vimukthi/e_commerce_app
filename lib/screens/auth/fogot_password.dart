@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
+import 'package:e_commerce_app/providers/signin_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -11,7 +13,7 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -66,7 +68,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       CutomTextField(
                         prefixIcon: Icons.email,
                         label: "Email",
-                        controller: _emailController,
+                        controller: Provider.of<SignInProvider>(context)
+                            .recoveryEmailController,
                       ),
                       const SizedBox(
                         height: 10,
@@ -75,7 +78,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         size: size,
                         text: "Reset Password",
                         colors: [Colors.amber.shade600, Colors.amber.shade800],
-                        onTap: () {},
+                        onTap: () {
+                          Provider.of<SignInProvider>(context, listen: false)
+                              .sendResetEmail();
+                        },
                       ),
                     ],
                   ),

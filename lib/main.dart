@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/firebase_options.dart';
+import 'package:e_commerce_app/providers/signin_provider.dart';
 import 'package:e_commerce_app/providers/signup_provider.dart';
 import 'package:e_commerce_app/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,9 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
         create: (context) => SignUpProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => SignInProvider(),
       )
     ],
     child: const MyApp(),

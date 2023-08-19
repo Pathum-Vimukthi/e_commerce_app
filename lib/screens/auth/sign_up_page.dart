@@ -2,6 +2,7 @@ import 'package:e_commerce_app/components/custom_buttons/custom_button.dart';
 import 'package:e_commerce_app/components/custom_text.dart';
 import 'package:e_commerce_app/components/custom_text_field/custom_text_field.dart';
 import 'package:e_commerce_app/providers/signup_provider.dart';
+import 'package:e_commerce_app/screens/auth/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -110,7 +111,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                 Colors.grey.shade600,
                                 Colors.grey.shade800
                               ],
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignInPage(),
+                                    ));
+                              },
                             )
                           ],
                         );
