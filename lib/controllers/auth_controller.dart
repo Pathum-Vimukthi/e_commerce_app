@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/models/uder_models.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
@@ -75,5 +76,21 @@ class AuthController {
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().i("Failed to add user: $error"));
+  }
+
+  //Fetch User Data
+  Future<UserModel?> getUserData(String uid) async {
+    try {
+      DocumentSnapshot userData = await users.doc(uid).get();
+      //Logger().d(userData.data());
+      return UserModel.fromMap(userData.data() as Map<String, dynamic>);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  //UpdateProfile
+  Future<void> updateProfile(uid, name) async {
+    users.doc(uid).update({"name": name});
   }
 }

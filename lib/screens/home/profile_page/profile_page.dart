@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+              Provider.of<UserProvider>(context).userData!.userImage,
               width: 100,
               height: 100,
             ),
@@ -44,7 +44,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 size: size,
                 text: "Update",
                 colors: [Colors.amber.shade600, Colors.amber.shade900],
-                onTap: () {}),
+                onTap: () {
+                  Provider.of<UserProvider>(context, listen: false)
+                      .updateProfileData(value.nameController.text);
+                }),
             const SizedBox(
               height: 8,
             ),
