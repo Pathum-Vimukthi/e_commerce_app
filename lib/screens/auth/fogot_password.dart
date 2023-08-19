@@ -80,7 +80,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         colors: [Colors.amber.shade600, Colors.amber.shade800],
                         onTap: () {
                           Provider.of<SignInProvider>(context, listen: false)
-                              .sendResetEmail();
+                              .sendResetEmail(context);
                         },
                       ),
                     ],

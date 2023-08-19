@@ -44,15 +44,18 @@ class AuthController {
     }
   }
 
-  //Create User with Email and Paasword
-  static Future<void> createUserAccount(
-      {required String email, required String password}) async {
+  //Create User Account with Email and Paasword
+  static Future<void> createUserAccount({
+    required String email,
+    required String password,
+  }) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
       Logger().i(credential.user!.uid);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
